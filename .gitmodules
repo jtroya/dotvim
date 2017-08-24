@@ -1,0 +1,9 @@
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "vim-javascript"]
+	path = vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim-jsx"]
+	path = vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
