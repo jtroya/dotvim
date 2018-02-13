@@ -23,3 +23,9 @@ let g:jsx_ext_required = 0
 let g:javascript_plugin_jsdoc = 10
 set foldmethod=syntax
 let g:syntastic_javascript_checkers = ['eslint']
+
+call plug#begin('~/.vim/autoload')
+Plug 'elmcast/elm-vim'
+call plug#end()
+let g:elm_syntastic_show_warnings = 1
+
