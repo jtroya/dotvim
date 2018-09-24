@@ -4,7 +4,10 @@ set hidden
 set number
 set vb t_vb=
 set ts=2 sts=2 sw=2 expandtab
-syntax on
+
+syntax enable
+set background=dark
+colorscheme material-theme
 
 if has("autocmd")
   filetype plugin indent on
@@ -24,8 +27,9 @@ let g:javascript_plugin_jsdoc = 10
 set foldmethod=syntax
 let g:syntastic_javascript_checkers = ['eslint']
 
-call plug#begin('~/.vim/autoload')
-Plug 'elmcast/elm-vim'
-call plug#end()
-let g:elm_syntastic_show_warnings = 1
+let g:elm_jump_to_error = 0
+let g:elm_make_show_warnings = 0
+let g:elm_syntastic_show_warnings = 0
 
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'fancy'
