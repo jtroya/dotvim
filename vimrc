@@ -1,35 +1,37 @@
-execute pathogen#infect()
+" vim-plug
+call plug#begin('~/.vim/plugged')
 
-set hidden
+" plugin section
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" end vim-plug
+call plug#end()
+
 set number
-set vb t_vb=
-set ts=2 sts=2 sw=2 expandtab
-
-syntax enable
 set background=dark
-colorscheme material-theme
 
 if has("autocmd")
   filetype plugin indent on
 endif
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:jsx_ext_required = 0
-let g:javascript_plugin_jsdoc = 10
-set foldmethod=syntax
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:elm_jump_to_error = 0
-let g:elm_make_show_warnings = 0
-let g:elm_syntastic_show_warnings = 0
-
+" Powerline
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
+
+" NERDTree
+autocmd vimenter * NERDTree
+let NERDTreeShowHidden=1
+map <C-b> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+" If more than one window and previous buffer was NERDTree, go back to it.
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+
