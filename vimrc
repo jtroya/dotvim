@@ -10,6 +10,8 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'crusoexia/vim-monokai' 
 " end vim-plug
 call plug#end()
 
@@ -39,6 +41,19 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Theme
 set number
-let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
+set termguicolors
+
+" Monokai
+colorscheme monokai
+let g:monokai_term_italic = 1
+let g:monokai_gui_italic = 1
+
+" Dracula
+" set background=dark
+" colorscheme dracula
+
+" Solarized
+" let g:solarized_termcolors=256
+" set background=light
+" colorscheme solarized
+
