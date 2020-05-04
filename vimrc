@@ -8,30 +8,37 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
+Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
 " end vim-plug
 call plug#end()
-
-set number
-set background=dark
 
 if has("autocmd")
   filetype plugin indent on
 endif
 
-" Powerline
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
+" Lightline
+set laststatus=2
+let g:lightline = {'colorscheme': 'powerline' }
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" Fonts
+set guifont=Menlo\ Regular:h18
+
+" Tabs
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 " NERDTree
-autocmd vimenter * NERDTree
-let NERDTreeShowHidden=1
-map <C-b> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
+" Theme
+set number
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
